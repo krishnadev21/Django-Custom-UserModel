@@ -1,0 +1,26 @@
+{% extends 'main.html' %} 
+
+{% block content %} 
+{% load static %}
+<!-- Signup CSS file -->
+<link rel="stylesheet" href="{% static 'styles/signup.css' %}" />
+
+<!-- Signup starts here -->
+<div class="login-container">
+  <form method="POST" action="">
+    {% csrf_token %}
+    <div class="login-form">
+      {% for field in form %}
+      <label for="">{{field.label}}</label>
+      {{field}} 
+      {% endfor %}
+      <div class="button-container">
+        <!-- <button class="register-button">Register</button> -->
+        <a href="{% url 'login' %}" class="back-button">Back</a>
+        <button class="login-button" type="submit">Register</button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Signup ends here -->
+{% endblock %}

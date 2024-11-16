@@ -1,0 +1,58 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<!-- Based on: https://dribbble.com/shots/4883028-Profile-Stats-->
+<div class="layout">
+  <div class="profile">
+    <div class="profile__picture">
+      <img src="{{request.user.avatar.url}}" alt="ananddavis" />
+    </div>
+    <div class="profile__header">
+      <div class="profile__account">
+        <h4 class="profile__username">@{{user.username}}</h4>
+      </div>
+      <div class="profile__edit">
+        <a class="profile__button" href="{% url 'user-update' %}"
+          >Edit Profile</a
+        >
+      </div>
+    </div>
+    <div class="profile__stats">
+      <div class="profile__stat">
+        <div class="profile__icon profile__icon--gold">
+          <!-- <i class="fas fa-wallet"></i> -->
+        </div>
+        <div class="profile__value">
+          Name
+          <div class="profile__key">{{user.name}}</div>
+        </div>
+      </div>
+      <div class="profile__stat">
+        <div class="profile__icon profile__icon--blue">
+          <!-- <i class="fas fa-signal"></i> -->
+        </div>
+        <div class="profile__value">
+          Email
+          <div class="profile__key">{{user.email}}</div>
+        </div>
+      </div>
+      <div class="profile__stat">
+        <div class="profile__icon profile__icon--pink">
+          <!-- <i class="fas fa-heart"></i> -->
+        </div>
+        <div class="profile__value">
+          Last login
+          <div class="profile__key">{{user.last_login | timesince}} ago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<center>
+    <div class="profile__bio">
+        <div class="profile__username"><p>About</p></div>
+        <div class="profile__key"></div>{{user.bio}}</div>
+    </div>
+</center>
+{% endblock %}

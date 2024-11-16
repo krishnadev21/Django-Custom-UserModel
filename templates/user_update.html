@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+<!-- User update CSS file -->
+<link rel="stylesheet" href="{% static 'styles/user_update.css' %}" />
+
+<!-- User update starts here -->
+<div class="login-container">
+    <form  method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+      <div class="login-form">
+        {% for field in form %}
+            <label for="">{{field.label}}</label>
+            {{field}}
+         {% endfor %}
+        <div class="button-container">
+          <!-- <button class="register-button">Register</button> -->
+          <a href="{{request.META.HTTP_REFERER}}" class="back-button">Back</a>
+          <button class="update-btn" type="submit">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- User update ends here -->
+{% endblock %}
